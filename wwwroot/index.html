@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Event Platform</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <h1>The BEST Events are here</h1>
+    <br />
+    <h2>Track Upcoming Events</h2> <br />
+    <form id="eventInputForm">
+        <label>Select Days: </label>
+        <select id="upcomingDays">
+            <option value=30>Next 30 days</option>
+            <option value=60>Next 60 days</option>
+            <option value=180>Next 180 days</option>
+        </select>
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+
+    <form id="ticketInputForm">
+        <label>Event Id: </label>
+        <input type="text" id="eventID" />
+        <button type="submit">Summary Details</button>
+    </form>
+
+    <form id="higestAmount">
+        <button type="submit">Top 5 Highest Amount</button>
+    </form>
+
+    <form id="higestSales">
+        <button type="submit">Top 5 Highest Sold</button>
+    </form>
+
+    <table id="result"></table>
+    <div class="pagination" id="pagination"></div>  <!-- assuming event list will grow added pagination -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
