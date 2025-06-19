@@ -16,11 +16,12 @@ namespace EventPlatformApp.Services
 
         public async Task<IEnumerable<Event>> GetUpcomingEvents(int upcomingDays)
         {
-            var session = _sessionFactory.OpenSession();
             var allEvents = new List<Event>();
             IEnumerable<Event> upcomingEvents = new List<Event>();
             try
             {
+                var session = _sessionFactory.OpenSession();
+
                 allEvents = await session.Query<Event>()
                     .Select(e => new Event
                     {
@@ -72,11 +73,12 @@ namespace EventPlatformApp.Services
 
         public async Task<List<Event>> GetAllEvents()
         {
-            var session = _sessionFactory.OpenSession();
             var allEvents = new List<Event>();
 
             try
             {
+                var session = _sessionFactory.OpenSession();
+
                 allEvents = await session.Query<Event>()
                     .Select(e => new Event
                     {
@@ -86,12 +88,14 @@ namespace EventPlatformApp.Services
                         EndsOn = e.EndsOn,
                     })
                     .ToListAsync();
+
+                session.Close();
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            session.Close();
             return allEvents;
         }
     }

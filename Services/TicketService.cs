@@ -26,19 +26,27 @@ namespace EventPlatformApp.Services
         public async void InitializeDB()
         {
             List<Event> eventData = new List<Event>();
-            eventData = await _eventService.GetAllEvents();
+            try
+            {
+                eventData = await _eventService.GetAllEvents();
 
-            _databaseHelper.CreateTicketTable(eventData, _dbFilePath);
-            //_databaseHelper.PopulateAmountAndSalesData(eventData, _dbFilePath);
+                _databaseHelper.CreateTicketTable(eventData, _dbFilePath);
+                //_databaseHelper.PopulateAmountAndSalesData(eventData, _dbFilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         public async Task<List<Ticket>> GetTicketData(string eventId)
         {
-            var session = _sessionFactory.OpenSession();
             var ticketData = new List<Ticket>();
             var eventTickets = new List<Ticket>();
             try
             {
+                var session = _sessionFactory.OpenSession();
+
                 ticketData = await session.Query<Ticket>()
                     .Select(e => new Ticket
                     {
@@ -66,11 +74,12 @@ namespace EventPlatformApp.Services
 
         public async Task<List<Ticket>> GetTop5Events_DollarAmount()
         {
-            var session = _sessionFactory.OpenSession();
             var top5Price = new List<Ticket>();
 
             try
             {
+                var session = _sessionFactory.OpenSession();
+
                 top5Price = await session.Query<Ticket>()
                     .Select(e => new Ticket
                     {
@@ -97,11 +106,12 @@ namespace EventPlatformApp.Services
 
         public async Task<List<Ticket>> GetTop5Events_SalesCount()
         {
-            var session = _sessionFactory.OpenSession();
             var top5Sales = new List<Ticket>();
 
             try
             {
+                var session = _sessionFactory.OpenSession();
+
                 top5Sales = await session.Query<Ticket>()
                     .Select(e => new Ticket
                     {
