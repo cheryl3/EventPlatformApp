@@ -8,6 +8,10 @@ Instructions to run code:
 	- NHibernate
 	- NHibernate.Extensions.Sqlite
 	- NHibernate.Linq
+ 	- Microsoft.NET.Test.Sdk
+	- Moq
+ 	- MSTest.TestAdapter
+  	- MSTest.TestFramework  
 
 5. The skillsAssessmentEvents.db file should be present in the Data folder.
 6. Clean and Build project.
