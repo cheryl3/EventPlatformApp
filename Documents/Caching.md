@@ -28,6 +28,7 @@ Functional Requirements:
 - Ability to download & print ticket info.
 - Analytics on event performance (success/failure/top selling/ location) - For event organiser.
 - Payment gateway supporting multiple currency.
+- Translation service (optional)
 
 Non-Functional Requirements:
 - Fast and responsive interface.
@@ -63,6 +64,10 @@ Testing:
 
 Authentication:
 - JWT token based Authentication
+
+API License:
+- 3rd party API license for payment (e.g. Mastercard, Paypal, Stripe etc.)
+- 3rd party API license for language translation (e.g. Microsoft translation API) [optional]
 
 Deployment
 - IIS or Azure
